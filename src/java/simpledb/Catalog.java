@@ -16,12 +16,19 @@ import java.util.*;
 
 public class Catalog {
 
+    private Map<Integer, Table> tables;
+    private Map<String, Integer> indices;
+
+
     /**
      * Constructor.
      * Creates a new, empty catalog.
      */
     public Catalog() {
         // some code goes here
+        this.tables = new HashMap<>();
+        this.indices = new HashMap<>();
+
     }
 
     /**
@@ -35,6 +42,12 @@ public class Catalog {
      */
     public void addTable(DbFile file, String name, String pkeyField) {
         // some code goes here
+        int tableId = file.getId();
+        this.indices.put(name, tableId);
+        Table t = new Table(file, name, pkeyField);
+        this.tables.put(tableId, t);
+
+
     }
 
     public void addTable(DbFile file, String name) {
@@ -48,7 +61,7 @@ public class Catalog {
      * @param file the contents of the table to add;  file.getId() is the identfier of
      *    this file/tupledesc param for the calls getTupleDesc and getFile
      */
-    public void addTable(DbFile file) {
+    public void addTable(DbFile file)  {
         addTable(file, (UUID.randomUUID()).toString());
     }
 
@@ -58,7 +71,10 @@ public class Catalog {
      */
     public int getTableId(String name) throws NoSuchElementException {
         // some code goes here
-        return 0;
+        if(this.indices.containsKey(name))
+            return this.indices.get(name);
+        throw new NoSuchElementException();
+        //return 0;
     }
 
     /**
@@ -69,7 +85,9 @@ public class Catalog {
      */
     public TupleDesc getTupleDesc(int tableid) throws NoSuchElementException {
         // some code goes here
-        return null;
+        if(this.tables.containsKey(tableid))
+            return this.tables.get(tableid).getFile().getTupleDesc();
+        throw new NoSuchElementException();
     }
 
     /**
@@ -80,12 +98,16 @@ public class Catalog {
      */
     public DbFile getDbFile(int tableid) throws NoSuchElementException {
         // some code goes here
-        return null;
+        if(this.tables.containsKey(tableid))
+            return this.tables.get(tableid).getFile();
+        throw new NoSuchElementException();
     }
 
-    public String getPrimaryKey(int tableid) {
+    public String getPrimaryKey(int tableid) throws NoSuchElementException {
         // some code goes here
-        return null;
+        if(this.tables.containsKey(tableid))
+            return this.tables.get(tableid).getPkeyField();
+        throw new NoSuchElementException();
     }
 
     public Iterator<Integer> tableIdIterator() {
@@ -93,21 +115,25 @@ public class Catalog {
         return null;
     }
 
-    public String getTableName(int id) {
+    public String getTableName(int id) throws NoSuchElementException {
         // some code goes here
-        return null;
+        if(this.tables.containsKey(id))
+            return this.tables.get(id).getName();
+        throw new NoSuchElementException();
     }
     
     /** Delete all tables from the catalog */
     public void clear() {
         // some code goes here
+        this.tables.clear();
+        this.indices.clear();
     }
     
     /**
      * Reads the schema from a file and creates the appropriate tables in the database.
      * @param catalogFile
      */
-    public void loadSchema(String catalogFile) {
+    public void loadSchema(String catalogFile) throws Exception {
         String line = "";
         String baseFolder=new File(catalogFile).getParent();
         try {
@@ -155,6 +181,30 @@ public class Catalog {
         } catch (IndexOutOfBoundsException e) {
             System.out.println ("Invalid catalog entry : " + line);
             System.exit(0);
+        }
+    }
+
+    private class Table{
+        private DbFile file;
+        private String name;
+        private String pkeyField;
+
+        public Table(DbFile file, String name, String pkeyField){
+            this.file = file;
+            this.name = name;
+            this.pkeyField = pkeyField;
+        }
+
+        public DbFile getFile(){
+            return this.file;
+        }
+
+        public String getName(){
+            return this.name;
+        }
+
+        public String getPkeyField(){
+            return this.pkeyField;
         }
     }
 }
