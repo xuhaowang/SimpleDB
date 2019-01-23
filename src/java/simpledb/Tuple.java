@@ -2,6 +2,8 @@ package simpledb;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.NoSuchElementException;
 import java.util.Iterator;
 
 /**
@@ -14,6 +16,8 @@ public class Tuple implements Serializable {
     private static final long serialVersionUID = 1L;
     private TupleDesc td;
     private Field[] field;
+    protected transient int modCount = 0;
+    private int size = 0;
 
     /**
      * Create a new tuple with the specified schema (type).
@@ -25,6 +29,7 @@ public class Tuple implements Serializable {
     public Tuple(TupleDesc td) {
         // some code goes here
         this.td = td;
+        this.size = td.numFields();
         this.field = new Field[td.numFields()];
     }
 
@@ -113,6 +118,49 @@ public class Tuple implements Serializable {
     public Iterator<Field> fields()
     {
         // some code goes here
-        return null;
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<Field>{
+        int cursor;
+        int lastRet = -1;
+        int expectedModCount;
+
+        MyIterator(){
+            this.expectedModCount = Tuple.this.modCount;
+        }
+
+        public boolean hasNext(){
+            return this.cursor != Tuple.this.size;
+        }
+
+        public Field next(){
+            this.checkForComodification();
+            int i = this.cursor;
+            if (i >= Tuple.this.size){
+                throw new NoSuchElementException();
+            }
+            else {
+                Field[] elementData = Tuple.this.field;
+                if (i >= elementData.length) {
+                    throw new ConcurrentModificationException();
+                } else {
+                    this.cursor = i + 1;
+                    return elementData[this.lastRet = i];
+                }
+            }
+
+        }
+
+        public void remove(){
+            //some code
+        }
+
+        final void checkForComodification(){
+            if (this.expectedModCount != Tuple.this.modCount){
+                throw new ConcurrentModificationException();
+            }
+        }
+
     }
 }
