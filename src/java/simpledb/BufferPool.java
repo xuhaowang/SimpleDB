@@ -19,6 +19,8 @@ public class BufferPool {
     other classes. BufferPool should use the numPages argument to the
     constructor instead. */
     public static final int DEFAULT_PAGES = 50;
+    private Page[] pages = null;
+    private Permissions[] perms = null;
 
     /**
      * Creates a BufferPool that caches up to numPages pages.
@@ -27,6 +29,9 @@ public class BufferPool {
      */
     public BufferPool(int numPages) {
         // some code goes here
+        this.pages = new Page[numPages];
+        this.perms = new Permissions[numPages];
+
     }
 
     /**
@@ -45,9 +50,24 @@ public class BufferPool {
      * @param perm the requested permissions on the page
      */
     public  Page getPage(TransactionId tid, PageId pid, Permissions perm)
-        throws TransactionAbortedException, DbException {
+        throws TransactionAbortedException, DbException, IOException {
         // some code goes here
-        return null;
+        int i = 0;
+        while(i < this.pages.length && this.pages[i] != null){
+            if(this.pages[i].getId().equals(pid)){
+                this.pages[i].markDirty(true, tid);
+                this.perms[i] = perm;
+                return this.pages[i];
+            }
+            i++;
+        }
+        if(i < this.pages.length){
+            return null;
+        }
+        else{
+            throw new DbException("the buffer is full");
+        }
+        //return null;
     }
 
     /**

@@ -41,7 +41,7 @@ public class TupleDesc implements Serializable {
      *        that are included in this TupleDesc
      * */
     public Iterator<TDItem> iterator() {
-        // some code goes here
+        //some code goes here
         return null;
     }
 

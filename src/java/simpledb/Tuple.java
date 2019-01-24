@@ -16,6 +16,7 @@ public class Tuple implements Serializable {
     private static final long serialVersionUID = 1L;
     private TupleDesc td;
     private Field[] field;
+    private RecordId recordId;
     protected transient int modCount = 0;
     private int size = 0;
 
@@ -47,7 +48,7 @@ public class Tuple implements Serializable {
      */
     public RecordId getRecordId() {
         // some code goes here
-        return null;
+        return this.recordId;
     }
 
     /**
@@ -58,6 +59,7 @@ public class Tuple implements Serializable {
      */
     public void setRecordId(RecordId rid) {
         // some code goes here
+        this.recordId = rid;
     }
 
     /**
@@ -122,7 +124,7 @@ public class Tuple implements Serializable {
     }
 
     private class MyIterator implements Iterator<Field>{
-        int cursor;
+        int cursor = 0;
         int lastRet = -1;
         int expectedModCount;
 
