@@ -54,9 +54,8 @@ public class BufferPool {
         // some code goes here
         int i = 0;
         int tableid = pid.getTableId();
-        HeapFile hf = (HeapFile) Database.getCatalog().getDbFile(tableid);
-        File f = hf.getFile();
-        RandomAccessFile raf = new RandomAccessFile(f, "r");
+
+
         while(i < this.pages.length){
             if(this.pages[i] == null){
                 i++;
@@ -69,11 +68,24 @@ public class BufferPool {
             }
             i++;
         }
+
+        HeapFile hf = (HeapFile) Database.getCatalog().getDbFile(tableid);
+        HeapPage hp = (HeapPage) hf.readPage(pid);
+        /*File f = hf.getFile();
+        RandomAccessFile raf = new RandomAccessFile(f, "r");
         long pos = PAGE_SIZE * pid.pageNumber();
         byte[] data = new byte[BufferPool.PAGE_SIZE];
         raf.seek(pos);
         raf.read(data, 0, BufferPool.PAGE_SIZE);
-        HeapPage hp = new HeapPage((HeapPageId)pid, data);
+        HeapPage hp = new HeapPage((HeapPageId)pid, data);*/
+        i = 0;
+        while(i < this.pages.length){
+            if(this.pages[i] == null){
+                this.pages[i] = hp;
+                break;
+            }
+            i++;
+        }
         return hp;
         //return null;
     }

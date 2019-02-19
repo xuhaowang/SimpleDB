@@ -75,7 +75,9 @@ public class HeapPage implements Page {
     }
 
     public int getValidNumTuples(){
-        return this.numSlots - this.getNumEmptySlots();
+        int numValidTuples = 0;
+        numValidTuples = this.numSlots - this.getNumEmptySlots();
+        return numValidTuples;
     }
 
     /**
@@ -286,10 +288,14 @@ public class HeapPage implements Page {
     public int getNumEmptySlots() {
         // some code goes here
         int numEmptySlots = 0;
+        int flag = 0;
         for(int i = 0; i < this.header.length; i++){
             for(int j = 0; j < 8; j++){
+                flag++;
                 if(((this.header[i] & (1 << j)) & 0xff) == 0)
                     numEmptySlots++;
+                if(flag == this.numSlots)
+                    break;
             }
         }
         return numEmptySlots;

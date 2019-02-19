@@ -189,6 +189,10 @@ public class HeapFile implements DbFile {
             }
             if(this.currentPgNo == this.numPages)
                 return false;
+            if(this.currentPgNo == this.numPages - 1){
+                if(this.cursor >= this.pg.getValidNumTuples() )
+                    return false;
+            }
             return true;
 
         }
