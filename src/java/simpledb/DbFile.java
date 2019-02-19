@@ -17,7 +17,7 @@ public interface DbFile extends Serializable {
      *
      * @throws IllegalArgumentException if the page does not exist in this file.
      */
-    public Page readPage(PageId id);
+    public Page readPage (PageId id);
 
     /**
      * Push the specified page to disk.

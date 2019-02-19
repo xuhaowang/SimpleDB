@@ -64,13 +64,18 @@ public class HeapPage implements Page {
     /** Retrieve the number of tuples on this page.
         @return the number of tuples on this page
     */
-    private int getNumTuples() {        
+    public int getNumTuples() {
         // some code goes here
         int tupleSize = this.td.getSize();
         int numTuples = (BufferPool.PAGE_SIZE * 8) / (tupleSize * 8 + 1);
+
         return numTuples;
         //return 0;
 
+    }
+
+    public int getValidNumTuples(){
+        return this.numSlots - this.getNumEmptySlots();
     }
 
     /**

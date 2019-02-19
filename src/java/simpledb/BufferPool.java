@@ -53,20 +53,28 @@ public class BufferPool {
         throws TransactionAbortedException, DbException, IOException {
         // some code goes here
         int i = 0;
-        while(i < this.pages.length && this.pages[i] != null){
-            if(this.pages[i].getId().equals(pid)){
+        int tableid = pid.getTableId();
+        HeapFile hf = (HeapFile) Database.getCatalog().getDbFile(tableid);
+        File f = hf.getFile();
+        RandomAccessFile raf = new RandomAccessFile(f, "r");
+        while(i < this.pages.length){
+            if(this.pages[i] == null){
+                i++;
+                continue;
+            }
+            if(pid.equals(this.pages[i].getId())){
                 this.pages[i].markDirty(true, tid);
                 this.perms[i] = perm;
                 return this.pages[i];
             }
             i++;
         }
-        if(i < this.pages.length){
-            return null;
-        }
-        else{
-            throw new DbException("the buffer is full");
-        }
+        long pos = PAGE_SIZE * pid.pageNumber();
+        byte[] data = new byte[BufferPool.PAGE_SIZE];
+        raf.seek(pos);
+        raf.read(data, 0, BufferPool.PAGE_SIZE);
+        HeapPage hp = new HeapPage((HeapPageId)pid, data);
+        return hp;
         //return null;
     }
 
