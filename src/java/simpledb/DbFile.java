@@ -53,7 +53,7 @@ public interface DbFile extends Serializable {
      *   of the file
      */
     public Page deleteTuple(TransactionId tid, Tuple t)
-        throws DbException, TransactionAbortedException;
+        throws DbException, TransactionAbortedException, IOException;
 
     /**
      * Returns an iterator over all the tuples stored in this DbFile. The

@@ -1,5 +1,8 @@
 package simpledb;
 
+import javax.imageio.IIOException;
+import java.io.IOException;
+
 /**
  * Inserts tuples read from the child operator into the tableid specified in the
  * constructor
@@ -7,6 +10,11 @@ package simpledb;
 public class Insert extends Operator {
 
     private static final long serialVersionUID = 1L;
+    private TransactionId tid;
+    private DbIterator child;
+    private int tableid;
+    private TupleDesc td;
+    private boolean firstFetch = true;
 
     /**
      * Constructor.
@@ -24,23 +32,32 @@ public class Insert extends Operator {
     public Insert(TransactionId t,DbIterator child, int tableid)
             throws DbException {
         // some code goes here
+        this.tid = t;
+        this.child = child;
+        this.tableid = tableid;
+        this.td = new TupleDesc(new Type[]{Type.INT_TYPE});
     }
 
     public TupleDesc getTupleDesc() {
         // some code goes here
-        return null;
+        return this.td;
     }
 
     public void open() throws DbException, TransactionAbortedException {
         // some code goes here
+        child.open();
+        super.open();
     }
 
     public void close() {
         // some code goes here
+        super.close();
+        child.close();
     }
 
     public void rewind() throws DbException, TransactionAbortedException {
         // some code goes here
+        child.rewind();
     }
 
     /**
@@ -58,17 +75,38 @@ public class Insert extends Operator {
      */
     protected Tuple fetchNext() throws TransactionAbortedException, DbException {
         // some code goes here
-        return null;
+        int numRecords = 0;
+        BufferPool buff = Database.getBufferPool();
+        while (child.hasNext()){
+            numRecords++;
+            Tuple t = child.next();
+            try {
+                buff.insertTuple(tid, tableid, t);
+            }catch (IOException e){
+                throw new DbException("IOException happens");
+            }
+        }
+        if(!firstFetch && numRecords == 0)
+            return null;
+        Tuple t = new Tuple(td);
+        Field f = new IntField(numRecords);
+        t.setField(0, f);
+        firstFetch = false;
+        return t;
     }
 
     @Override
     public DbIterator[] getChildren() {
         // some code goes here
-        return null;
+        return new DbIterator[] { this.child };
     }
 
     @Override
     public void setChildren(DbIterator[] children) {
         // some code goes here
+        if (this.child!=children[0])
+        {
+            this.child = children[0];
+        }
     }
 }

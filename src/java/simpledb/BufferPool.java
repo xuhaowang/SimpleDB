@@ -1,6 +1,7 @@
 package simpledb;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * BufferPool manages the reading and writing of pages into memory from
@@ -62,7 +63,6 @@ public class BufferPool {
                 continue;
             }
             if(pid.equals(this.pages[i].getId())){
-                this.pages[i].markDirty(true, tid);
                 this.perms[i] = perm;
                 return this.pages[i];
             }
@@ -71,20 +71,21 @@ public class BufferPool {
 
         HeapFile hf = (HeapFile) Database.getCatalog().getDbFile(tableid);
         HeapPage hp = (HeapPage) hf.readPage(pid);
-        /*File f = hf.getFile();
-        RandomAccessFile raf = new RandomAccessFile(f, "r");
-        long pos = PAGE_SIZE * pid.pageNumber();
-        byte[] data = new byte[BufferPool.PAGE_SIZE];
-        raf.seek(pos);
-        raf.read(data, 0, BufferPool.PAGE_SIZE);
-        HeapPage hp = new HeapPage((HeapPageId)pid, data);*/
         i = 0;
         while(i < this.pages.length){
             if(this.pages[i] == null){
                 this.pages[i] = hp;
+                this.perms[i] = perm;
                 break;
             }
             i++;
+        }
+        if(i == pages.length){
+            evictPage();
+            for(int j = 0; j < pages.length; j++){
+                if(pages[j] == null)
+                    pages[j] = hp;
+            }
         }
         return hp;
         //return null;
@@ -151,7 +152,38 @@ public class BufferPool {
     public void insertTuple(TransactionId tid, int tableId, Tuple t)
         throws DbException, IOException, TransactionAbortedException {
         // some code goes here
-        // not necessary for proj1
+        DbFile df = Database.getCatalog().getDbFile(tableId);
+        Page res = df.insertTuple(tid, t).get(0);
+        boolean in = false;
+        boolean isFull = true;
+        int flag = 0;
+        for(int i = 0; i < pages.length; i++){
+            if(pages[i] == null){
+                isFull = false;
+                flag = i;
+            }
+            else {
+                if(res.getId().equals(pages[i].getId())){
+                    pages[i].markDirty(true, tid);
+                    in = true;
+                    break;
+                }
+            }
+
+        }
+        if(!in){
+            if(isFull){
+                evictPage();
+                for(int j = 0; j < pages.length; j++){
+                    if(pages[j] == null)
+                        pages[j] = res;
+                }
+            }
+            else {
+                pages[flag] = res;
+                pages[flag].markDirty(false, tid);
+            }
+        }
     }
 
     /**
@@ -170,7 +202,15 @@ public class BufferPool {
     public  void deleteTuple(TransactionId tid, Tuple t)
         throws DbException, TransactionAbortedException {
         // some code goes here
-        // not necessary for proj1
+        PageId pid = t.getRecordId().getPageId();
+        DbFile df = Database.getCatalog().getDbFile(pid.getTableId());
+        try {
+            Page res = df.deleteTuple(tid, t);
+            res.markDirty(true, tid);
+        }catch (IOException e){
+            throw new DbException("IOException happens");
+        }
+
     }
 
     /**

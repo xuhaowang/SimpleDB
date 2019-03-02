@@ -20,6 +20,8 @@ public class HeapPage implements Page {
     int numSlots;
 
     byte[] oldData;
+    TransactionId tid;
+    boolean dirty = false;
 
     /**
      * Create a HeapPage from a set of bytes of data read from disk.
@@ -74,6 +76,12 @@ public class HeapPage implements Page {
 
     }
 
+    public boolean isEmpty(){
+        if(this.numSlots == getNumEmptySlots())
+            return true;
+        return false;
+    }
+
     public int getValidNumTuples(){
         int numValidTuples = 0;
         numValidTuples = this.numSlots - this.getNumEmptySlots();
@@ -84,7 +92,7 @@ public class HeapPage implements Page {
      * Computes the number of bytes in the header of a page in a HeapFile with each tuple occupying tupleSize bytes
      * @return the number of bytes in the header of a page in a HeapFile with each tuple occupying tupleSize bytes
      */
-    private int getHeaderSize() {
+    public int getHeaderSize() {
         // some code goes here
         int numTuples = getNumTuples();
         int headerSize = numTuples / 8 ;
@@ -249,7 +257,16 @@ public class HeapPage implements Page {
      */
     public void deleteTuple(Tuple t) throws DbException {
         // some code goes here
-        // not necessary for lab1
+        RecordId rid = t.getRecordId();
+        int tupleno = rid.tupleno();
+        Tuple test = tuples[tupleno];
+        if(test == null || !rid.equals(test.getRecordId()))
+            throw new DbException("This tuple is not on this page");
+        markSlotUsed(tupleno, false);
+        tuples[tupleno] = null;
+
+
+
     }
 
     /**
@@ -261,7 +278,16 @@ public class HeapPage implements Page {
      */
     public void insertTuple(Tuple t) throws DbException {
         // some code goes here
-        // not necessary for lab1
+       for(int i = 0; i < numSlots; i++){
+           if(!isSlotUsed(i)){
+               RecordId newRid = new RecordId(this.pid, i);
+               t.setRecordId(newRid);
+               tuples[i] = t;
+               markSlotUsed(i, true);
+               return;
+           }
+       }
+       throw new DbException("This page is full");
     }
 
     /**
@@ -271,6 +297,15 @@ public class HeapPage implements Page {
     public void markDirty(boolean dirty, TransactionId tid) {
         // some code goes here
 	// not necessary for lab1
+        if(dirty){
+            this.dirty = dirty;
+            this.tid = tid;
+        }
+        else {
+            this.dirty = dirty;
+            this.tid = null;
+        }
+
     }
 
     /**
@@ -279,7 +314,7 @@ public class HeapPage implements Page {
     public TransactionId isDirty() {
         // some code goes here
 	// Not necessary for lab1
-        return null;      
+        return this.tid;
     }
 
     /**
@@ -317,7 +352,12 @@ public class HeapPage implements Page {
      */
     private void markSlotUsed(int i, boolean value) {
         // some code goes here
-        // not necessary for lab1
+        int index = i / 8;
+        if(value)
+            this.header[index] = (byte) (this.header[index] | (1 << (i - index * 8)));
+        else
+            this.header[index] = (byte)((this.header[index]) & (~(1 << (i - index * 8))));
+
     }
 
     /**
@@ -331,7 +371,6 @@ public class HeapPage implements Page {
 
     private class MyIterator implements Iterator<Tuple>{
         int cursor;
-        int lastRet = -1;
         int count = 0;
         int validTupleSize = 0;
         MyIterator(){
@@ -347,17 +386,13 @@ public class HeapPage implements Page {
         public Tuple next(){
             int i = this.cursor;
             Tuple[] elementData = HeapPage.this.tuples;
-            if(HeapPage.this.isSlotUsed(i)){
-                this.cursor = i + 1;
-                this.count++;
-                return elementData[i];
-            }
-            else {
-                while (i < elementData.length && !HeapPage.this.isSlotUsed(i)) i++;
-                this.cursor = i + 1;
-                this.count++;
-                return elementData[i];
-            }
+            while (i < elementData.length && !HeapPage.this.isSlotUsed(i)) i++;
+            if(i == elementData.length)
+                return null;
+            this.cursor = i + 1;
+            this.count++;
+            return elementData[i];
+
 
         }
 
