@@ -66,6 +66,7 @@ public class Delete extends Operator {
         while (child.hasNext()){
             Tuple t = child.next();
             buff.deleteTuple(tid, t);
+//            System.out.println(numRecords);
             numRecords++;
         }
         if(!firstFetch && numRecords == 0)

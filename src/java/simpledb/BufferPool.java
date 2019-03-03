@@ -55,16 +55,18 @@ public class BufferPool {
         // some code goes here
         int i = 0;
         int tableid = pid.getTableId();
-
-
         while(i < this.pages.length){
-            if(this.pages[i] == null){
+            if(this.pages[i] == null || this.pages[i].getId() == null){
                 i++;
                 continue;
             }
             if(pid.equals(this.pages[i].getId())){
-                this.perms[i] = perm;
-                return this.pages[i];
+                Page temp = pages[i];
+                for(int j = i; j > 0; j--)
+                    pages[j] = pages[j - 1];
+                pages[0] = temp;
+                this.perms[0] = perm;
+                return this.pages[0];
             }
             i++;
         }
@@ -83,12 +85,13 @@ public class BufferPool {
         if(i == pages.length){
             evictPage();
             for(int j = 0; j < pages.length; j++){
-                if(pages[j] == null)
+                if(pages[j] == null){
                     pages[j] = hp;
+                    break;
+                }
             }
         }
         return hp;
-        //return null;
     }
 
     /**
@@ -158,7 +161,7 @@ public class BufferPool {
         boolean isFull = true;
         int flag = 0;
         for(int i = 0; i < pages.length; i++){
-            if(pages[i] == null){
+            if(pages[i] == null || pages[i].getId() == null){
                 isFull = false;
                 flag = i;
             }
@@ -205,8 +208,12 @@ public class BufferPool {
         PageId pid = t.getRecordId().getPageId();
         DbFile df = Database.getCatalog().getDbFile(pid.getTableId());
         try {
-            Page res = df.deleteTuple(tid, t);
-            res.markDirty(true, tid);
+            HeapPage res = (HeapPage) df.deleteTuple(tid, t);
+            if(!res.isEmpty())
+                res.markDirty(true, tid);
+            else
+               res.setPid(null);
+
         }catch (IOException e){
             throw new DbException("IOException happens");
         }
@@ -220,7 +227,14 @@ public class BufferPool {
      */
     public synchronized void flushAllPages() throws IOException {
         // some code goes here
-        // not necessary for proj1
+        for(Page p : pages){
+            if(p != null && p.getId() != null && p.isDirty() != null){
+                PageId pid = p.getId();
+                DbFile df = Database.getCatalog().getDbFile(pid.getTableId());
+                df.writePage(p);
+                p.markDirty(false, null);
+            }
+        }
 
     }
 
@@ -240,14 +254,28 @@ public class BufferPool {
      */
     private synchronized  void flushPage(PageId pid) throws IOException {
         // some code goes here
-        // not necessary for proj1
+        for(Page p : pages){
+            if(p != null && p.getId() != null && p.getId().equals(pid)){
+                DbFile df = Database.getCatalog().getDbFile(pid.getTableId());
+                df.writePage(p);
+                p.markDirty(false, null);
+            }
+        }
+
     }
 
     /** Write all pages of the specified transaction to disk.
      */
     public synchronized  void flushPages(TransactionId tid) throws IOException {
         // some code goes here
-        // not necessary for proj1
+        for(Page p : pages){
+            if(p != null && p.getId() != null && p.isDirty() == tid){
+                PageId pid = p.getId();
+                DbFile df = Database.getCatalog().getDbFile(pid.getTableId());
+                df.writePage(p);
+                p.markDirty(false, null);
+            }
+        }
     }
 
     /**
@@ -256,7 +284,16 @@ public class BufferPool {
      */
     private synchronized  void evictPage() throws DbException {
         // some code goes here
-        // not necessary for proj1
+        int l = pages.length;
+        DbFile df = Database.getCatalog().getDbFile(pages[l - 1].getId().getTableId());
+        try{
+            df.writePage(pages[l - 1]);
+        }catch (IOException e){
+            throw new DbException("IOException happens");
+        }
+        for(int i = l - 1; i > 0; i--)
+            pages[i] = pages[i - 1];
+        pages[0] = null;
     }
 
 }

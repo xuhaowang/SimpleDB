@@ -76,6 +76,14 @@ public class HeapPage implements Page {
 
     }
 
+    public void setPid(HeapPageId pid){
+        this.pid = pid;
+    }
+
+    /**
+     *
+     * @return true if this page is empty
+     */
     public boolean isEmpty(){
         if(this.numSlots == getNumEmptySlots())
             return true;

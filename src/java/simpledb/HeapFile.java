@@ -128,7 +128,6 @@ public class HeapFile implements DbFile {
             if(hp.getNumEmptySlots() > 0){
                 hp.insertTuple(t);
                 res.add(hp);
-            //    writePage(hp);
                 break;
             }
         }
@@ -162,13 +161,16 @@ public class HeapFile implements DbFile {
                 HeapPageId hpid = new HeapPageId(tableId, i);
                 HeapPage hpi = (HeapPage)Database.getBufferPool().getPage(tid, hpid, perm);
                 byte[] data = hpi.getPageData();
-                raf.seek(i * BufferPool.PAGE_SIZE);
+                raf.seek((i - 1) * BufferPool.PAGE_SIZE);
                 raf.write(data);
+            //    HeapPageId newHpid = new HeapPageId(tableId, i - 1);
+            //    hpi.setPid(newHpid);
+
             }
-            fc.truncate(this.numPages  * BufferPool.PAGE_SIZE);
             this.numPages--;
+            fc.truncate((this.numPages )  * BufferPool.PAGE_SIZE);
+
             fc.close();
-            //writePage(hp);
         }
         return hp;
 
@@ -247,6 +249,14 @@ public class HeapFile implements DbFile {
 
         public void rewind() throws DbException, TransactionAbortedException{
             this.currentPgNo = 0;
+            HeapPageId pid = new HeapPageId(this.tableId, this.currentPgNo);
+            try {
+                this.pg = (HeapPage) Database.getBufferPool().getPage(this.tid, pid, this.perm);
+                this.pgItr = this.pg.iterator();
+            }catch (IOException e){
+                throw new DbException("IOException happens");
+            }
+
         }
 
         public void close(){
