@@ -276,6 +276,7 @@ public class Parser {
     public Query handleQueryStatement(ZQuery s, TransactionId tId)
             throws TransactionAbortedException, DbException, IOException,
             simpledb.ParsingException, Zql.ParseException {
+        // and run it
         Query query = new Query(tId);
 
         LogicalPlan lp = parseQueryLogicalPlan(tId, s);
@@ -583,7 +584,7 @@ public class Parser {
             "group by", "max(", "min(", "avg(", "count", "rollback", "commit",
             "insert", "delete", "values", "into" };
 
-    public static void main(String argv[]) throws IOException,Exception {
+    public static void main(String argv[]) throws IOException {
 
         if (argv.length < 1 || argv.length > 4) {
             System.out.println("Invalid number of arguments.\n" + usage);
@@ -603,7 +604,7 @@ public class Parser {
 
     protected boolean interactive = true;
 
-    protected void start(String[] argv) throws IOException, Exception {
+    protected void start(String[] argv) throws IOException {
         // first add tables to database
         Database.getCatalog().loadSchema(argv[0]);
         TableStats.computeStatistics();

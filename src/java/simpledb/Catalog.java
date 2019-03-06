@@ -112,7 +112,7 @@ public class Catalog {
 
     public Iterator<Integer> tableIdIterator() {
         // some code goes here
-        return null;
+        return this.tables.keySet().iterator();
     }
 
     public String getTableName(int id) throws NoSuchElementException {
@@ -133,7 +133,7 @@ public class Catalog {
      * Reads the schema from a file and creates the appropriate tables in the database.
      * @param catalogFile
      */
-    public void loadSchema(String catalogFile) throws Exception {
+    public void loadSchema(String catalogFile)  {
         String line = "";
         String baseFolder=new File(catalogFile).getParent();
         try {
