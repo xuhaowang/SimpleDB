@@ -82,14 +82,6 @@ public class TableStats {
      *            sequential-scan IO and disk seeks.
      */
     public TableStats(int tableid, int ioCostPerPage) {
-        // For this function, you'll have to get the
-        // DbFile for the table in question,
-        // then scan through its tuples and calculate
-        // the values that you need.
-        // You should try to do this reasonably efficiently, but you don't
-        // necessarily have to (for example) do everything
-        // in a single scan of the table.
-        // some code goes here
         this.ioCostPerPage = ioCostPerPage;
         this.tableid = tableid;
         DbFile df = Database.getCatalog().getDbFile(tableid);

@@ -7,20 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b6c65be-7604-4cc9-9dcc-3be434b79308" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/java/simpledb/HashEquiJoin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/simpledb/IntHistogram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/simpledb/OperatorCardinality.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/simpledb/QueryPlanVisualizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/simpledb/StringHistogram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/simpledb/IntHistogramTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/simpledb/JoinOptimizerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/simpledb/TableStatsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/simpledb/systemtest/QueryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/simpledb/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/simpledb/Catalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log" beforeDir="false" afterPath="$PROJECT_DIR$/log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/simpledb/JoinOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/simpledb/JoinOptimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/simpledb/LogicalJoinNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/simpledb/LogicalJoinNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/simpledb/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/simpledb/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/simpledb/PlanCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/simpledb/PlanCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/simpledb/TableStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/simpledb/TableStats.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/src/" />
@@ -41,53 +31,61 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/simpledb/StringHistogram.java">
+        <entry file="file://$PROJECT_DIR$/src/java/simpledb/LogicalJoinNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-384">
-              <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-              <folding>
-                <element signature="e#1349#1350#0" expanded="true" />
-                <element signature="e#1391#1392#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="112">
+              <caret line="71" column="42" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/simpledb/TableStats.java">
+        <entry file="file://$PROJECT_DIR$/test/simpledb/JoinOptimizerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="219" selection-start-line="219" selection-end-line="219" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/simpledb/TableStatsTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1680">
-              <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/simpledb/IntHistogram.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="80" column="80" lean-forward="true" selection-start-line="80" selection-start-column="80" selection-end-line="80" selection-end-column="80" />
+            <state relative-caret-position="-6784">
+              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#10061#10078#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/simpledb/IntHistogramTest.java">
+        <entry file="file://$PROJECT_DIR$/test/simpledb/systemtest/QueryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
+            <state relative-caret-position="64">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/simpledb/JoinOptimizer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1098">
+              <caret line="247" column="50" selection-start-line="247" selection-start-column="50" selection-end-line="247" selection-end-column="50" />
+              <folding>
+                <element signature="e#6719#6727#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/simpledb/CostCard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/simpledb/PlanCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -147,9 +145,11 @@
         <option value="$PROJECT_DIR$/src/java/simpledb/BufferPool.java" />
         <option value="$PROJECT_DIR$/src/java/simpledb/Parser.java" />
         <option value="$PROJECT_DIR$/src/java/simpledb/Catalog.java" />
-        <option value="$PROJECT_DIR$/src/java/simpledb/TableStats.java" />
         <option value="$PROJECT_DIR$/src/java/simpledb/IntHistogram.java" />
         <option value="$PROJECT_DIR$/test/simpledb/TableStatsTest.java" />
+        <option value="$PROJECT_DIR$/src/java/simpledb/TableStats.java" />
+        <option value="$PROJECT_DIR$/src/java/simpledb/PlanCache.java" />
+        <option value="$PROJECT_DIR$/src/java/simpledb/JoinOptimizer.java" />
       </list>
     </option>
   </component>
@@ -192,14 +192,20 @@
             <path>
               <item name="CS186-proj1" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS186-proj1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS186-proj1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS186-proj1" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="simpledb" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CS186-proj1" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS186-proj1" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="simpledb" type="462c0819:PsiDirectoryNode" />
+              <item name="systemtest" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -210,7 +216,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551871854840" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551975647123" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -228,8 +234,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TableStatsTest.estimateSelectivityTest">
-    <configuration name="IntHistogramTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.QueryTest">
+    <configuration name="JoinOptimizerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="simpledb" />
       <extension name="coverage">
         <pattern>
@@ -238,13 +244,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="simpledb" />
-      <option name="MAIN_CLASS_NAME" value="simpledb.IntHistogramTest" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.JoinOptimizerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntHistogramTest.opNotEqualsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JoinOptimizerTest.bigOrderJoinsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="simpledb" />
       <extension name="coverage">
         <pattern>
@@ -253,14 +259,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="simpledb" />
-      <option name="MAIN_CLASS_NAME" value="simpledb.IntHistogramTest" />
-      <option name="METHOD_NAME" value="opNotEqualsTest" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.JoinOptimizerTest" />
+      <option name="METHOD_NAME" value="bigOrderJoinsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TableStatsTest.estimateScanCostTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JoinOptimizerTest.nonequalityOrderJoinsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="simpledb" />
       <extension name="coverage">
         <pattern>
@@ -269,14 +275,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="simpledb" />
-      <option name="MAIN_CLASS_NAME" value="simpledb.TableStatsTest" />
-      <option name="METHOD_NAME" value="estimateScanCostTest" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.JoinOptimizerTest" />
+      <option name="METHOD_NAME" value="nonequalityOrderJoinsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TableStatsTest.estimateSelectivityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JoinOptimizerTest.orderJoinsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="simpledb" />
       <extension name="coverage">
         <pattern>
@@ -285,36 +291,35 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="simpledb" />
-      <option name="MAIN_CLASS_NAME" value="simpledb.TableStatsTest" />
-      <option name="METHOD_NAME" value="estimateSelectivityTest" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.JoinOptimizerTest" />
+      <option name="METHOD_NAME" value="orderJoinsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TableStatsTest.estimateTableCardinalityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QueryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="simpledb" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="simpledb.*" />
+          <option name="PATTERN" value="simpledb.systemtest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="simpledb" />
-      <option name="MAIN_CLASS_NAME" value="simpledb.TableStatsTest" />
-      <option name="METHOD_NAME" value="estimateTableCardinalityTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="simpledb.systemtest" />
+      <option name="MAIN_CLASS_NAME" value="simpledb.systemtest.QueryTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TableStatsTest.estimateSelectivityTest" />
-        <item itemvalue="JUnit.TableStatsTest.estimateTableCardinalityTest" />
-        <item itemvalue="JUnit.TableStatsTest.estimateScanCostTest" />
-        <item itemvalue="JUnit.IntHistogramTest" />
-        <item itemvalue="JUnit.IntHistogramTest.opNotEqualsTest" />
+        <item itemvalue="JUnit.QueryTest" />
+        <item itemvalue="JUnit.JoinOptimizerTest" />
+        <item itemvalue="JUnit.JoinOptimizerTest.nonequalityOrderJoinsTest" />
+        <item itemvalue="JUnit.JoinOptimizerTest.bigOrderJoinsTest" />
+        <item itemvalue="JUnit.JoinOptimizerTest.orderJoinsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -332,35 +337,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TableStatsTest_estimateScanCostTest - 2019.03.06 at 17h 25m 00s.xml">
-      <configuration name="TableStatsTest.estimateScanCostTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest_estimateJoinCostTest - 2019.03.06 at 20h 50m 57s.xml">
+      <configuration name="JoinOptimizerTest.estimateJoinCostTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateTableCardinalityTest - 2019.03.06 at 17h 35m 36s.xml">
-      <configuration name="TableStatsTest.estimateTableCardinalityTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest_estimateJoinCardinality - 2019.03.06 at 21h 05m 04s.xml">
+      <configuration name="JoinOptimizerTest.estimateJoinCardinality" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateSelectivityTest - 2019.03.06 at 19h 03m 01s.xml">
-      <configuration name="TableStatsTest.estimateSelectivityTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest - 2019.03.06 at 21h 06m 15s.xml">
+      <configuration name="JoinOptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateSelectivityTest - 2019.03.06 at 19h 08m 59s.xml">
-      <configuration name="TableStatsTest.estimateSelectivityTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest_orderJoinsTest - 2019.03.08 at 00h 07m 49s.xml">
+      <configuration name="JoinOptimizerTest.orderJoinsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateSelectivityTest - 2019.03.06 at 19h 12m 42s.xml">
-      <configuration name="TableStatsTest.estimateSelectivityTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest_orderJoinsTest - 2019.03.08 at 00h 14m 48s.xml">
+      <configuration name="JoinOptimizerTest.orderJoinsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateSelectivityTest - 2019.03.06 at 19h 29m 12s.xml">
-      <configuration name="TableStatsTest.estimateSelectivityTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest_orderJoinsTest - 2019.03.08 at 00h 17m 33s.xml">
+      <configuration name="JoinOptimizerTest.orderJoinsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateSelectivityTest - 2019.03.06 at 19h 29m 32s.xml">
-      <configuration name="TableStatsTest.estimateSelectivityTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest_bigOrderJoinsTest - 2019.03.08 at 00h 18m 12s.xml">
+      <configuration name="JoinOptimizerTest.bigOrderJoinsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateSelectivityTest - 2019.03.06 at 19h 29m 57s.xml">
-      <configuration name="TableStatsTest.estimateSelectivityTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest_nonequalityOrderJoinsTest - 2019.03.08 at 00h 18m 29s.xml">
+      <configuration name="JoinOptimizerTest.nonequalityOrderJoinsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateSelectivityTest - 2019.03.06 at 19h 30m 33s.xml">
-      <configuration name="TableStatsTest.estimateSelectivityTest" configurationId="JUnit" />
+    <history-entry file="JoinOptimizerTest - 2019.03.08 at 00h 19m 51s.xml">
+      <configuration name="JoinOptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TableStatsTest_estimateSelectivityTest - 2019.03.06 at 19h 30m 59s.xml">
-      <configuration name="TableStatsTest.estimateSelectivityTest" configurationId="JUnit" />
+    <history-entry file="QueryTest - 2019.03.08 at 00h 20m 49s.xml">
+      <configuration name="QueryTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -374,8 +379,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1867518" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20510775" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -384,7 +390,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3159609" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3159609" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39739415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -483,6 +489,12 @@
           <properties />
           <option name="timeStamp" value="95" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/simpledb/JoinOptimizer.java</url>
+          <line>237</line>
+          <properties />
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -548,71 +560,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/jline-0.9.94.jar!/jline/ArgumentCompletor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/lang/String.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="246" column="18" selection-start-line="246" selection-start-column="18" selection-end-line="246" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/simpledb/TransactionId.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding>
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/zql.jar!/Zql/ZStatement.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/zql.jar!/Zql/ZQuery.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <element signature="e#1005#1006#0" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/zql.jar!/Zql/ZqlJJParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1183">
-          <caret line="572" column="34" lean-forward="true" selection-start-line="572" selection-start-column="34" selection-end-line="572" selection-end-column="34" />
-          <folding>
-            <element signature="e#99270#99271#0" expanded="true" />
-            <element signature="e#99310#99311#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/zql.jar!/Zql/ZqlParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="68" column="35" lean-forward="true" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
-          <folding>
-            <element signature="e#1333#1334#0" expanded="true" />
-            <element signature="e#1370#1371#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/zql.jar!/Zql/ZFromItem.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -720,20 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/simpledb/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#1207#1208#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1351#1352#0" expanded="true" />
-            <element signature="e#1700#1701#0" expanded="true" />
-            <element signature="e#1739#1740#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/simpledb/RecordId.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-606">
@@ -768,13 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/simpledb/LogicalJoinNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/simpledb/Project.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -796,13 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/simpledb/JoinOptimizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/simpledb/Predicate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-125">
@@ -817,42 +736,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/simpledb/LogicalPlan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="299" column="13" selection-start-line="299" selection-start-column="13" selection-end-line="299" selection-end-column="13" />
-          <folding>
-            <element signature="e#2126#2127#0" expanded="true" />
-            <element signature="e#2160#2161#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/simpledb/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4064">
-          <caret line="290" column="66" lean-forward="true" selection-start-line="290" selection-start-column="66" selection-end-line="290" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/concurrent/ConcurrentHashMap.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="139" column="11" selection-start-line="139" selection-start-column="11" selection-end-line="139" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/simpledb/Catalog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="114" column="47" lean-forward="true" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
-          <folding>
-            <element signature="e#1636#1637#0" expanded="true" />
-            <element signature="e#1676#1677#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -935,6 +822,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/simpledb/TableStatsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/simpledb/StringHistogram.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-384">
@@ -948,32 +842,145 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/simpledb/IntHistogramTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
+        <state relative-caret-position="576">
+          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/simpledb/IntHistogram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="80" column="80" lean-forward="true" selection-start-line="80" selection-start-column="80" selection-end-line="80" selection-end-column="80" />
+        <state relative-caret-position="256">
+          <caret line="91" column="9" lean-forward="true" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/simpledb/TableStatsTest.java">
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
+        <state relative-caret-position="496">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1112#1113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/HashSet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/CostCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/HeapFileEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="289" column="17" selection-start-line="289" selection-start-column="17" selection-end-line="289" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/LogicalPlan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+          <folding>
+            <element signature="e#2126#2127#0" expanded="true" />
+            <element signature="e#2160#2161#0" expanded="true" />
+            <element signature="e#2755#2756#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/simpledb/TableStats.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/PlanCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1351#1352#0" expanded="true" />
+            <element signature="e#1700#1701#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/Catalog.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
-          <caret line="219" selection-start-line="219" selection-end-line="219" />
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="e#1636#1637#0" expanded="true" />
+            <element signature="e#1676#1677#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/JoinOptimizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1098">
+          <caret line="247" column="50" selection-start-line="247" selection-start-column="50" selection-end-line="247" selection-end-column="50" />
+          <folding>
+            <element signature="e#6719#6727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/simpledb/systemtest/QueryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/simpledb/LogicalJoinNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="71" column="42" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/simpledb/JoinOptimizerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6784">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+          <folding>
+            <element signature="e#10061#10078#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

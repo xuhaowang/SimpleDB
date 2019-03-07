@@ -111,7 +111,7 @@ public class JoinOptimizer {
             // HINT: You may need to use the variable "j" if you implemented
             // a join algorithm that's more complicated than a basic nested-loops
             // join.
-            return -1.0;
+            return cost1 + card1 * cost2 + card1 * card2;
         }
     }
 
@@ -156,7 +156,18 @@ public class JoinOptimizer {
             Map<String, Integer> tableAliasToId) {
         int card = 1;
         // some code goes here
-        return card <= 0 ? 1 : card;
+        if(joinOp == Predicate.Op.EQUALS){
+            if(t1pkey && t2pkey)
+                return 1;
+            else if(t1pkey && !t2pkey)
+                return card2;
+            else if(!t1pkey && t2pkey)
+                return card1;
+            else
+                return card1 > card2 ? card1 : card2;
+        }
+        else
+            return (int)(card1 * card2 * 0.3);
     }
 
     /**
@@ -192,6 +203,7 @@ public class JoinOptimizer {
 
     }
 
+   // private Set<LogicalJoinNode> nodeSetToLJSet(Set<>)
     /**
      * Compute a logical, reasonably efficient join on the specified tables. See
      * project description for hints on how this should be implemented.
@@ -222,6 +234,33 @@ public class JoinOptimizer {
 
         // some code goes here
         //Replace the following
+        int size = joins.size();
+        PlanCache pc = new PlanCache();
+        for(int i = 1; i <= size; i++){
+            Set<Set<LogicalJoinNode>> sslj = enumerateSubsets(joins, i);
+            for(Set<LogicalJoinNode> slj : sslj){
+                boolean flag = true;
+                for(LogicalJoinNode lj : slj){
+                    CostCard cc;
+                    if(flag){
+                         cc = computeCostAndCardOfSubplan(stats, filterSelectivities,
+                                lj, slj, Double.POSITIVE_INFINITY, pc);
+                         if (cc == null) continue;
+                         pc.addPlan(slj, cc.cost, cc.card, cc.plan);
+                         flag = false;
+                    }
+                   else {
+                        cc = computeCostAndCardOfSubplan(stats, filterSelectivities,
+                                lj, slj, pc.getCost(slj), pc);
+                        if(cc != null)  pc.addPlan(slj, cc.cost, cc.card, cc.plan);
+                    }
+                }
+            }
+        }
+        Set<Set<LogicalJoinNode>> sslj = enumerateSubsets(joins, size);
+        for(Set<LogicalJoinNode> slj : sslj){
+            return pc.getOrder(slj);
+        }
         return joins;
     }
 
@@ -300,8 +339,7 @@ public class JoinOptimizer {
             t2card = table2Alias == null ? 0 : stats.get(table2Name)
                     .estimateTableCardinality(
                             filterSelectivities.get(j.t2Alias));
-            rightPkey = table2Alias == null ? false : isPkey(table2Alias,
-                    j.f2PureName);
+            rightPkey = table2Alias!=null && isPkey(table2Alias, j.f2PureName);
         } else {
             // news is not empty -- figure best way to join j to news
             prevBest = pc.getOrder(news);
@@ -328,8 +366,7 @@ public class JoinOptimizer {
                 t2card = j.t2Alias == null ? 0 : stats.get(table2Name)
                         .estimateTableCardinality(
                                 filterSelectivities.get(j.t2Alias));
-                rightPkey = j.t2Alias == null ? false : isPkey(j.t2Alias,
-                        j.f2PureName);
+                rightPkey = j.t2Alias!=null && isPkey(j.t2Alias, j.f2PureName);
             } else if (doesJoin(prevBest, j.t2Alias)) { // j.t2 is in prevbest
                                                         // (both
                 // shouldn't be)

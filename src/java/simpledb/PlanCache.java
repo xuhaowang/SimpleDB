@@ -19,7 +19,7 @@ public class PlanCache {
         @param order the ordering of the joins in the plan
     */
     void addPlan(Set<LogicalJoinNode> s, double cost, int card, Vector<LogicalJoinNode> order) {
-        bestOrders.put(s,order);                        
+        bestOrders.put(s,order);
         bestCosts.put(s,cost);
         bestCardinalities.put(s,card);
     }
