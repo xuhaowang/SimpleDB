@@ -64,6 +64,7 @@ public class OperatorCardinality {
         Integer tableId = tableAliasToId.get(tableAlias);
         double selectivity = 1.0;
         if (tableId != null) {
+
             selectivity = tableStats.get(
                     Database.getCatalog().getTableName(tableId))
                     .estimateSelectivity(

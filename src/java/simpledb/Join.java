@@ -132,12 +132,13 @@ public class Join extends Operator {
             td = getTupleDesc();
         Tuple newTuple = new Tuple(td);
         boolean flag = true;
-        while (child1.hasNext() || child2.hasNext()){
+        while (child1.hasNext() || child2.hasNext() ){
             Tuple t1 ;
             if(cursor != null && flag){
                 t1 = cursor;
                 flag = false;
             }
+
             else{
                 t1 = child1.next();
                 cursor = t1;
@@ -147,7 +148,6 @@ public class Join extends Operator {
                 break;
 
             while (child2.hasNext()){
-                i++;
                 Tuple t2 = child2.next();
                 if(p.filter(t1, t2)){
                     for(int i = 0; i < td1.numFields(); i++)
@@ -157,7 +157,7 @@ public class Join extends Operator {
                     return newTuple;
                 }
             }
-            child2.rewind();
+            if(child1.hasNext()) child2.rewind();
         }
         return null;
     }

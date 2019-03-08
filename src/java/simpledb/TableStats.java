@@ -116,9 +116,11 @@ public class TableStats {
             }
             this.numTups = numTups;
             dfItr.rewind();
+            System.out.println("first scan complete");
         }catch (Exception e){
             System.out.println("Scan DbFile Error");
         }
+
         for(int i = 0; i < intHistograms.length; i++)
             intHistograms[i] = new IntHistogram(NUM_HIST_BINS, min[i], max[i]);
 

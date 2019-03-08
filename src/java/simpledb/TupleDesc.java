@@ -42,12 +42,13 @@ public class TupleDesc implements Serializable {
      * */
     public Iterator<TDItem> iterator() {
         //some code goes here
-        return null;
+        return this.tdItems.iterator();
     }
 
     private static final long serialVersionUID = 1L;
     private Type[] typeAr = null;
     private String[] fieldAr = null;
+    private ArrayList<TDItem> tdItems;
 
     /**
      * Create a new TupleDesc with typeAr.length fields with fields of the
@@ -63,6 +64,10 @@ public class TupleDesc implements Serializable {
     public TupleDesc(Type[] typeAr, String[] fieldAr) {
         this.typeAr = typeAr;
         this.fieldAr = fieldAr;
+        this.tdItems = new ArrayList<>();
+        for(int i = 0; i < typeAr.length; i++){
+            this.tdItems.add(new TDItem(typeAr[i], fieldAr[i]));
+        }
         // some code goes here
     }
 
@@ -163,6 +168,8 @@ public class TupleDesc implements Serializable {
             if(this.fieldAr[i].equals(name))
                 return i;
         }
+
+
         throw new NoSuchElementException();
     }
 

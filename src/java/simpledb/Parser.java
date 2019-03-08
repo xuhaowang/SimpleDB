@@ -143,7 +143,8 @@ public class Parser {
             ZFromItem fromIt = from.elementAt(i);
             try {
 
-                int id = Database.getCatalog().getTableId(fromIt.getTable()); // will
+
+                int id = Database.getCatalog().getTableId(fromIt.getTable());// will
                                                                               // fall
                                                                               // through
                                                                               // if
@@ -282,6 +283,7 @@ public class Parser {
         LogicalPlan lp = parseQueryLogicalPlan(tId, s);
         DbIterator physicalPlan = lp.physicalPlan(tId,
                 TableStats.getStatsMap(), explain);
+
         query.setPhysicalPlan(physicalPlan);
         query.setLogicalPlan(lp);
 
@@ -297,6 +299,8 @@ public class Parser {
                         "updateOperatorCardinality", p, h, h);
 
                 System.out.println("The query plan is:");
+
+
                 m.invoke(null, (Operator) physicalPlan,
                         lp.getTableAliasToIdMapping(), TableStats.getStatsMap());
                 c = Class.forName("simpledb.QueryPlanVisualizer");
@@ -556,6 +560,7 @@ public class Parser {
                         throw new ParsingException((Exception) a);
                     if (a instanceof Zql.TokenMgrError)
                         throw (Zql.TokenMgrError) a;
+                    a.printStackTrace();
                     throw new DbException(a.getMessage());
                 } finally {
                     if (!inUserTrans)
@@ -609,8 +614,7 @@ public class Parser {
         Database.getCatalog().loadSchema(argv[0]);
         TableStats.computeStatistics();
 
-        String queryFile = null;
-
+        String queryFile = "queryFile";
         if (argv.length > 1) {
             for (int i = 1; i < argv.length; i++) {
                 if (argv[i].equals("-explain")) {

@@ -54,6 +54,7 @@ public class JoinOptimizer {
             throw new ParsingException("Unknown field " + lj.f1QuantifiedName);
         }
 
+
         if (lj instanceof LogicalSubplanJoinNode) {
             t2id = 0;
         } else {
@@ -65,6 +66,8 @@ public class JoinOptimizer {
                         + lj.f2QuantifiedName);
             }
         }
+
+
 
         JoinPredicate p = new JoinPredicate(t1id, lj.p, t2id);
 

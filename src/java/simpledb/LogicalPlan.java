@@ -306,6 +306,7 @@ public class LogicalPlan {
 
         }
 
+
         Iterator<LogicalFilterNode> filterIt = filters.iterator();        
         while (filterIt.hasNext()) {
             LogicalFilterNode lf = filterIt.next();
@@ -343,10 +344,12 @@ public class LogicalPlan {
 
             //s.addSelectivityFactor(estimateFilterSelectivity(lf,statsMap));
         }
+
         
         JoinOptimizer jo = new JoinOptimizer(this,joins);
 
         joins = jo.orderJoins(statsMap,filterSelectivities,explain);
+
 
         Iterator<LogicalJoinNode> joinIt = joins.iterator();
         while (joinIt.hasNext()) {
@@ -383,6 +386,8 @@ public class LogicalPlan {
             
             DbIterator j;
             j = jo.instantiateJoin(lj,plan1,plan2);
+
+
             subplanMap.put(t1name, j);
 
             if (!isSubqueryJoin) {
@@ -401,6 +406,8 @@ public class LogicalPlan {
             }
             
         }
+
+
 
         if (subplanMap.size() > 1) {
             throw new ParsingException("Query does not include join expressions joining all nodes!");
@@ -455,6 +462,7 @@ public class LogicalPlan {
                     outFields.add(id);
                     outTypes.add(td.getFieldType(id));
 
+
                 }
         }
 
@@ -477,6 +485,7 @@ public class LogicalPlan {
         if (hasOrderBy) {
             node = new OrderBy(node.getTupleDesc().fieldNameToIndex(oByField), oByAsc, node);
         }
+
 
         return new Project(outFields, outTypes, node);
     }

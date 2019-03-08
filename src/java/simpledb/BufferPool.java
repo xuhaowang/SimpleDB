@@ -84,6 +84,7 @@ public class BufferPool {
         }
         if(i == pages.length){
             evictPage();
+            //pages[0] = null;
             for(int j = 0; j < pages.length; j++){
                 if(pages[j] == null){
                     pages[j] = hp;

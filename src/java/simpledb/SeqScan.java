@@ -14,6 +14,7 @@ public class SeqScan implements DbIterator {
     private int tableid;
     private String tableAlias;
     private DbFileIterator itr;
+    private TupleDesc td;
 
     /**
      * Creates a sequential scan over the specified table as a part of the
@@ -96,22 +97,29 @@ public class SeqScan implements DbIterator {
      */
     public TupleDesc getTupleDesc() {
         // some code goes here
-        TupleDesc td = Database.getCatalog().getTupleDesc(tableid);
-        Type[] typeAr = td.getTypes();
-        String[] fieldNames = td.getFieldNames();
-        if(fieldNames != null){
-            for(int i = 0; i < fieldNames.length; i++){
-                fieldNames[i] = this.tableAlias + "." + fieldNames[i];
+        if(this.td == null){
+            TupleDesc td = Database.getCatalog().getTupleDesc(tableid);
+            Type[] typeAr = td.getTypes();
+            String[] fieldNames = td.getFieldNames();
+            if(fieldNames != null){
+                String[] newFieldNames = new String[fieldNames.length];
+                for(int i = 0; i < fieldNames.length; i++){
+                    newFieldNames[i] = this.tableAlias + "." + fieldNames[i];
+                }
+                this.td = new TupleDesc(typeAr, newFieldNames);
+
             }
-            return new TupleDesc(typeAr, fieldNames);
-        }
-        else {
-            fieldNames = new String[td.numFields()];
-            for(int i = 0; i < fieldNames.length; i++){
-                fieldNames[i] = this.tableAlias + "." + "null";
+            else {
+                fieldNames = new String[td.numFields()];
+                String[] newFieldNames = new String[fieldNames.length];
+                for(int i = 0; i < fieldNames.length; i++){
+                    newFieldNames[i] = this.tableAlias + "." + "null";
+                }
+                this.td = new TupleDesc(typeAr, newFieldNames);
             }
-            return new TupleDesc(typeAr, fieldNames);
         }
+
+        return td;
 
     }
 
