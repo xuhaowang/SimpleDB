@@ -1,2 +1,4 @@
 # SimpleDB
-A very Simple Database  implementation just for learning
+一个简易的数据库管理系统，支持简单的SQL语句（join，filter等）。基于代价估计和动态规划
+对qurey进行一定的优化。基于两阶段锁协议实现事务之间的隔离。
+

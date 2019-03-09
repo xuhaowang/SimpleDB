@@ -53,6 +53,7 @@ public class BufferPool {
     public  Page getPage(TransactionId tid, PageId pid, Permissions perm)
         throws TransactionAbortedException, DbException, IOException {
         // some code goes here
+        LockManager.acquireLock(pid, tid, perm);
         int i = 0;
         int tableid = pid.getTableId();
         while(i < this.pages.length){
@@ -92,6 +93,7 @@ public class BufferPool {
                 }
             }
         }
+        LockManager.releaseLock(pid, tid);
         return hp;
     }
 
@@ -106,7 +108,7 @@ public class BufferPool {
      */
     public  void releasePage(TransactionId tid, PageId pid) {
         // some code goes here
-        // not necessary for proj1
+
     }
 
     /**
@@ -122,7 +124,7 @@ public class BufferPool {
     /** Return true if the specified transaction has a lock on the specified page */
     public boolean holdsLock(TransactionId tid, PageId p) {
         // some code goes here
-        // not necessary for proj1
+
         return false;
     }
 
@@ -135,8 +137,7 @@ public class BufferPool {
      */
     public void transactionComplete(TransactionId tid, boolean commit)
         throws IOException {
-        // some code goes here
-        // not necessary for proj1
+
     }
 
     /**

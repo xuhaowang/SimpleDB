@@ -163,8 +163,6 @@ public class HeapFile implements DbFile {
                 byte[] data = hpi.getPageData();
                 raf.seek((i - 1) * BufferPool.PAGE_SIZE);
                 raf.write(data);
-            //    HeapPageId newHpid = new HeapPageId(tableId, i - 1);
-            //    hpi.setPid(newHpid);
 
             }
             this.numPages--;
